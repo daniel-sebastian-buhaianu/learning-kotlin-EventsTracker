@@ -8,9 +8,16 @@ fun main() {
     val event6 = Event(title = "Check out latest Android Jetpack library", daypart = Daypart.EVENING, durationInMinutes = 45)
     
     // store events in a mutable list
-    val events = mutableListOf<Event>(event1, event2, event3, event4, event5, event 6)
+    val events = mutableListOf<Event>(event1, event2, event3, event4, event5, event6)
+
+    // create list of short events (events which last less than 60 minutes)
+    val shortEvents = events.filter { it.durationInMinutes < 60 }
+
+    // print feedback
+    println("You have ${shortEvents.size} short events.")
 }
 
+// define Daypart class (stores constant values - immutable)
 enum class Daypart {
     MORNING, AFTERNOON, EVENING
 }
