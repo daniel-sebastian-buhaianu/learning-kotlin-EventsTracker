@@ -1,4 +1,5 @@
 fun main() {
+
     // hard coded events by team members
     val event1 = Event(title = "Wake up", description = "Time to get up", daypart = Daypart.MORNING, durationInMinutes = 0)
     val event2 = Event(title = "Eat breakfast", daypart = Daypart.MORNING, durationInMinutes = 15)
@@ -9,6 +10,11 @@ fun main() {
     
     // store events in a mutable list
     val events = mutableListOf<Event>(event1, event2, event3, event4, event5, event6)
+
+    // print events
+    events.forEach {
+        println(it.durationOfEvent)
+    }
 
     // create list of short events (events which last less than 60 minutes)
     val shortEvents = events.filter { it.durationInMinutes < 60 }
@@ -37,3 +43,11 @@ data class Event(
     val durationInMinutes: Int
 )
 
+// add durationOfEvent property to Event class
+// without modifying Event class directly
+val Event.durationOfEvent: String
+    get() = if (this.durationInMinutes < 60) {
+        "short"
+    } else {
+        "long"
+    }
