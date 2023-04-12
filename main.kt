@@ -18,6 +18,10 @@ fun main() {
     groupedEvents.forEach { (daypart, events) ->
         println("$daypart: ${events.size} events")
     }
+
+    println(
+        "Last event of the day : ${events.last().title}"
+    )
 }
 
 // define Daypart class (stores constant values - immutable)
