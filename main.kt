@@ -13,8 +13,11 @@ fun main() {
     // create list of short events (events which last less than 60 minutes)
     val shortEvents = events.filter { it.durationInMinutes < 60 }
 
-    // print feedback
-    println("You have ${shortEvents.size} short events.")
+    // group events by daypart (morning, afternoon and evening)
+    val groupedEvents = events.groupBy { it.daypart }
+    groupedEvents.forEach { (daypart, events) ->
+        println("$daypart: ${events.size} events")
+    }
 }
 
 // define Daypart class (stores constant values - immutable)
